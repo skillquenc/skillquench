@@ -1,98 +1,273 @@
 <!DOCTYPE html>
-
-<html lang="en" >
-
+<html lang="en">
 <head>
-
   <meta charset="UTF-8">
+  <title>SkillQuench</title>
+  <style>
+    /* Animated title styles */
+    .dreams-text {
+      position: fixed;
+      top: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'PP Neue Corp Wide', sans-serif;
+      font-size: 3.5vw;
+      font-weight: 800;
+      color: white;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      z-index: 999;
+      animation: fadeInOut 4s ease-in-out forwards;
+    }
 
-  <title>Untitled</title>
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+      20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    }
 
-  
+    /* Centered transparent login container */
+    .form-container {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 350px;
+      display: flex;
+      justify-content: center;
+    }
 
+    .form {
+      background-color: transparent;
+      width: 90%; /* Slightly narrower for better balance */
+      padding: 2rem 0; /* Vertical padding only */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Centered input containers */
+    .input-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .input-container {
+      width: 100%;
+      max-width: 300px; /* Slightly narrower than container */
+      display: flex;
+      justify-content: center;
+    }
+
+    .input-container input {
+      width: 100%;
+      padding: 1rem;
+      background-color: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 0.5rem;
+      color: white;
+      font-size: 0.875rem;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+      text-align: center; /* Center text inside inputs */
+    }
+
+    .input-container input::placeholder {
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+    }
+
+    .input-container input:focus {
+      border-color: #4F46E5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+      background-color: rgba(255,255,255,0.3);
+      outline: none;
+    }
+
+    .form-title {
+      font-size: 1.5rem;
+      line-height: 1.75rem;
+      font-weight: 600;
+      text-align: center;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      width: 100%;
+    }
+
+    .submit-container {
+      width: 100%;
+      max-width: 300px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .submit {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: rgba(79, 70, 229, 0.8);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      text-align: center;
+    }
+
+    .submit:hover {
+      background-color: rgba(67, 56, 202, 0.9);
+      transform: translateY(-2px);
+    }
+
+    .signup-link {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.875rem;
+      text-align: center;
+      margin-top: 1.5rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+      width: 100%;
+    }
+
+    .signup-link a {
+      color: #a5b4fc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Rest of your existing CSS... */
+    .join-me-btn {
+      position: fixed;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      border: 2px solid white;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-family: 'PP Neue Corp Wide', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+    /* ... (keep all other existing CSS styles) ... */
+  </style>
 </head>
-
 <body>
+  <!-- Fixed "Join me" button -->
+  <button class="join-me-btn" id="joinBtn">Join me</button>
 
-<!-- partial:index.partial.html -->
+  <!-- Animated title below Join button -->
+  <div class="dreams-text">Dreams of joys</div>
 
-<!DOCTYPE html>
-
-<html lang="en" >
-
-<head>
-
-  <meta charset="UTF-8">
-
-  <title>Parallax Image Layers - Osmo</title>
-
-  <link rel='stylesheet' href='https://slater.app/10324/23333.css'><link rel="stylesheet" href="./style.css">
-
-</head>
-
-<body>
-
-<!-- partial:index.partial.html -->
-
-<!--------- Osmo [https://osmo.supply/] --------->
-
-<div class="parallax">
-
-  <section class="parallax__header">
-
-    <div class="parallax__visuals">
-
-      <div class="parallax__black-line-overflow"></div>
-
-      <div data-parallax-layers class="parallax__layers">
-
-        <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795be09b462b2e8ebf71_osmo-parallax-layer-3.webp" loading="eager" width="800" data-parallax-layer="1" alt="" class="parallax__layer-img">
-
-        <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795b4d5ac529e7d3a562_osmo-parallax-layer-2.webp" loading="eager" width="800" data-parallax-layer="2" alt="" class="parallax__layer-img">
-
-        <div data-parallax-layer="3" class="parallax__layer-title">
-
-          <h2 class="parallax__title">SkillQuench</h2>
-
+  <!-- Original parallax structure -->
+  <div class="parallax">
+    <section class="parallax__header">
+      <div class="parallax__visuals">
+        <div class="parallax__black-line-overflow"></div>
+        <div data-parallax-layers class="parallax__layers">
+          <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795be09b462b2e8ebf71_osmo-parallax-layer-3.webp" 
+               loading="eager" width="800" data-parallax-layer="1" alt="" class="parallax__layer-img">
+          <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795b4d5ac529e7d3a562_osmo-parallax-layer-2.webp" 
+               loading="eager" width="800" data-parallax-layer="2" alt="" class="parallax__layer-img">
+          <div data-parallax-layer="3" class="parallax__layer-title">
+            <h2 class="parallax__title">SkillQuench</h2>
+          </div>
+          <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795bb5aceca85011ad83_osmo-parallax-layer-1.webp" 
+               loading="eager" width="800" data-parallax-layer="4" alt="" class="parallax__layer-img">
         </div>
-
-        <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795bb5aceca85011ad83_osmo-parallax-layer-1.webp" loading="eager" width="800" data-parallax-layer="4" alt="" class="parallax__layer-img">
-
       </div>
+    </section>
+    <section class="parallax__content" id="contentSection">
+      <!-- Perfectly centered login form with centered inputs -->
+      <div class="form-container">
+        <form class="form">
+          <p class="form-title">Sign in to SkillQuench</p>
+          <div class="input-group">
+            <div class="input-container">
+              <input type="email" placeholder="Enter email" required>
+            </div>
+            <div class="input-container">
+              <input type="password" placeholder="Enter password" required>
+            </div>
+            <div class="submit-container">
+              <button type="submit" class="submit">Sign in</button>
+            </div>
+          </div>
+          <p class="signup-link">
+            No account? <a href="#">Sign up</a>
+          </p>
+        </form>
+      </div>
+    </section>
+  </div>
 
-      <div class="parallax__fade"></div>
+  <!-- All scripts remain the same -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script>
+    // Initialize Lenis smooth scroll
+    const lenis = new Lenis();
+    
+    // Scroll to content function
+    document.getElementById('joinBtn').addEventListener('click', () => {
+      lenis.scrollTo('#contentSection', {
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      });
+    });
 
-    </div>
+    // Original parallax animation
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+      document.querySelectorAll('[data-parallax-layers]').forEach((triggerElement) => {
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: triggerElement,
+            start: "0% 0%",
+            end: "100% 0%",
+            scrub: 0
+          }
+        });
+        const layers = [
+          { layer: "1", yPercent: 70 },
+          { layer: "2", yPercent: 55 },
+          { layer: "3", yPercent: 40 },
+          { layer: "4", yPercent: 10 }
+        ];
+        layers.forEach((layerObj, idx) => {
+          tl.to(
+            triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
+            { yPercent: layerObj.yPercent, ease: "none" },
+            idx === 0 ? undefined : "<"
+          );
+        });
+      });
 
-  </section>
-
-  <section class="parallax__content">
-
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 160 160" fill="none" class="osmo-icon-svg"><path d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z" fill="currentColor"></path></svg>
-
-  </section>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-
-<!-- partial -->
-
-  <script  src="./script.js"></script>
-
+      // Update Lenis on scroll
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    });
+  </script>
 </body>
-
-</html>
-
-<!-- partial -->
-
-  
-
-</body>
-
-</html>
-
+  </html>
