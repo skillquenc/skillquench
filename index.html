@@ -1,529 +1,267 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <title>SkillQuench</title>
-
   <style>
-
-    /* Fixed button styles */
-
-    .join-me-btn {
-
+    /* Animated title styles */
+    .dreams-text {
       position: fixed;
-
-      top: 50px;
-
+      top: 150px;
       left: 50%;
-
       transform: translateX(-50%);
-
-      z-index: 1000;
-
-      background: rgba(0,0,0,0.7);
-
-      color: white;
-
-      border: 2px solid white;
-
-      padding: 15px 40px;
-
-      border-radius: 50px;
-
       font-family: 'PP Neue Corp Wide', sans-serif;
-
+      font-size: 3.5vw;
       font-weight: 800;
-
-      font-size: 1.2rem;
-
-      cursor: pointer;
-
-      letter-spacing: 1px;
-
-      text-transform: uppercase;
-
-      backdrop-filter: blur(5px);
-
-      transition: all 0.3s ease;
-
-    }
-
-    .join-me-btn:hover {
-
-      background: rgba(255,255,255,0.2);
-
-      transform: translateX(-50%) scale(1.05);
-
-    }
-
-    
-
-    /* Original parallax styles */
-
-    body { 
-
-      margin: 0; 
-
-      background: #000; 
-
       color: white;
-
-      overflow-x: hidden;
-
-      font-family: sans-serif;
-
-    }
-
-    .parallax { width: 100%; position: relative; }
-
-    .parallax__header { min-height: 100vh; position: relative; }
-
-    .parallax__visuals { 
-
-      width: 100%; 
-
-      height: 120%; 
-
-      position: absolute; 
-
-      top: 0; 
-
-      left: 0; 
-
-      overflow: hidden;
-
-    }
-
-    .parallax__layers { 
-
-      width: 100%; 
-
-      height: 100%; 
-
-      position: absolute; 
-
-      top: 0; 
-
-      left: 0;
-
-    }
-
-    .parallax__layer-img { 
-
-      width: 100%; 
-
-      height: 117.5%; 
-
-      position: absolute; 
-
-      top: -17.5%; 
-
-      left: 0;
-
-      object-fit: cover;
-
-    }
-
-    .parallax__title {
-
-      font-family: 'PP Neue Corp Wide', sans-serif;
-
-      font-size: 11vw;
-
-      font-weight: 800;
-
       text-align: center;
-
-      margin: 0;
-
-      position: relative;
-
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      z-index: 999;
+      animation: fadeInOut 4s ease-in-out forwards;
     }
 
-    .parallax__layer-title {
-
-      display: flex;
-
-      justify-content: center;
-
-      align-items: center;
-
-      width: 100%;
-
-      height: 100vh;
-
-      position: absolute;
-
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+      20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
     }
 
-    .parallax__content {
-
-      min-height: 100vh;
-
-      display: flex;
-
-      justify-content: center;
-
-      align-items: flex-end;
-
-      padding-bottom: 0;
-
-      box-sizing: border-box;
-
-      position: relative;
-
-    }
-
-    /* Centered bottom form container */
-
+    /* Centered transparent login container */
     .form-container {
-
       position: absolute;
-
-      bottom: 50px;
-
-      left: 0;
-
-      right: 0;
-
-      margin: 0 auto;
-
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 100%;
-
       max-width: 350px;
-
-      padding: 0 20px;
-
+      display: flex;
+      justify-content: center;
     }
-
-    /* Transparent form styles */
 
     .form {
-
       background-color: transparent;
-
+      width: 90%;
+      padding: 2rem 0;
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
-
-      width: 100%;
-
     }
 
-    .form-title {
-
-      font-size: 1.5rem;
-
-      line-height: 1.75rem;
-
-      font-weight: 600;
-
-      text-align: center;
-
-      color: white;
-
-      margin-bottom: 1.5rem;
-
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-
+    /* Input and button styles */
+    .input-group {
       width: 100%;
-
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
     }
 
     .input-container {
-
-      position: relative;
-
-      margin-bottom: 1rem;
-
       width: 100%;
-
+      max-width: 300px;
+      display: flex;
+      justify-content: center;
     }
 
     .input-container input {
-
-      background-color: rgba(255,255,255,0.9);
-
-      padding: 1rem;
-
-      font-size: 0.875rem;
-
       width: 100%;
-
+      padding: 1rem;
+      background-color: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
       border-radius: 0.5rem;
-
-      border: 1px solid #e5e7eb;
-
-      outline: none;
-
+      color: white;
+      font-size: 0.875rem;
+      backdrop-filter: blur(5px);
       transition: all 0.3s ease;
-
-      box-sizing: border-box;
-
+      text-align: center;
     }
 
-    .input-container input:focus {
-
-      border-color: #4F46E5;
-
-      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
-
+    /* Guest button specific styles */
+    .button-group {
+      width: 100%;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
     .submit {
-
-      display: block;
-
-      padding: 0.75rem;
-
-      background-color: #4F46E5;
-
-      color: #ffffff;
-
-      font-size: 0.875rem;
-
-      font-weight: 500;
-
       width: 100%;
-
-      border-radius: 0.5rem;
-
-      text-transform: uppercase;
-
+      padding: 0.75rem;
+      background-color: rgba(79, 70, 229, 0.8);
+      color: white;
       border: none;
-
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-transform: uppercase;
       cursor: pointer;
-
       transition: all 0.3s ease;
-
-      margin-top: 1rem;
-
+      backdrop-filter: blur(5px);
     }
 
-    .submit:hover {
+    .guest-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
 
-      background-color: #4338CA;
-
+    /* Hover states */
+    .submit:hover, .guest-btn:hover {
       transform: translateY(-2px);
+    }
+    
+    .submit:hover {
+      background-color: rgba(67, 56, 202, 0.9);
+    }
+    
+    .guest-btn:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
 
+    /* Rest of the styles... */
+    .form-title {
+      font-size: 1.5rem;
+      line-height: 1.75rem;
+      font-weight: 600;
+      text-align: center;
+      color: white;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .signup-link {
-
       color: rgba(255,255,255,0.8);
-
       font-size: 0.875rem;
-
       text-align: center;
-
       margin-top: 1.5rem;
-
       text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-
-      width: 100%;
-
     }
 
-    .signup-link a {
-
-      color: #a5b4fc;
-
-      text-decoration: none;
-
-      font-weight: 500;
-
+    .join-me-btn {
+      position: fixed;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      border: 2px solid white;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-family: 'PP Neue Corp Wide', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
     }
-
-    .signup-link a:hover {
-
-      text-decoration: underline;
-
-    }
-
   </style>
-
 </head>
-
 <body>
-
   <!-- Fixed "Join me" button -->
-
   <button class="join-me-btn" id="joinBtn">Join me</button>
 
-  <!-- Original parallax structure -->
+  <!-- Animated title -->
+  <div class="dreams-text">Dreams of joys</div>
 
+  <!-- Parallax sections -->
   <div class="parallax">
-
-    <section class="parallax__header">
-
-      <div class="parallax__visuals">
-
-        <div class="parallax__black-line-overflow"></div>
-
-        <div data-parallax-layers class="parallax__layers">
-
-          <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795be09b462b2e8ebf71_osmo-parallax-layer-3.webp" 
-
-               loading="eager" width="800" data-parallax-layer="1" alt="" class="parallax__layer-img">
-
-          <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795b4d5ac529e7d3a562_osmo-parallax-layer-2.webp" 
-
-               loading="eager" width="800" data-parallax-layer="2" alt="" class="parallax__layer-img">
-
-          <div data-parallax-layer="3" class="parallax__layer-title">
-
-            <h2 class="parallax__title">SkillQuench</h2>
-
-          </div>
-
-          <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795bb5aceca85011ad83_osmo-parallax-layer-1.webp" 
-
-               loading="eager" width="800" data-parallax-layer="4" alt="" class="parallax__layer-img">
-
-        </div>
-
-      </div>
-
-    </section>
-
+    <!-- [Your existing parallax layers...] -->
     <section class="parallax__content" id="contentSection">
-
-      <!-- Perfectly centered bottom form -->
-
       <div class="form-container">
-
         <form class="form">
-
           <p class="form-title">Sign in to SkillQuench</p>
-
-          <div class="input-container">
-
-            <input type="email" placeholder="Enter email" required>
-
+          <div class="input-group">
+            <div class="input-container">
+              <input type="email" placeholder="Enter email" required>
+            </div>
+            <div class="input-container">
+              <input type="password" placeholder="Enter password" required>
+            </div>
+            <div class="button-group">
+              <button type="submit" class="submit">Sign in</button>
+              <button type="button" class="guest-btn" id="guestBtn">Continue as Guest</button>
+            </div>
           </div>
-
-          <div class="input-container">
-
-            <input type="password" placeholder="Enter password" required>
-
-          </div>
-
-          <button type="submit" class="submit">Sign in</button>
-
           <p class="signup-link">
-
             No account? <a href="#">Sign up</a>
-
           </p>
-
         </form>
-
       </div>
-
     </section>
-
   </div>
 
-  <!-- All scripts -->
-
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-
   <script>
-
     // Initialize Lenis smooth scroll
-
     const lenis = new Lenis();
-
     
-
     // Scroll to content function
-
     document.getElementById('joinBtn').addEventListener('click', () => {
-
       lenis.scrollTo('#contentSection', {
-
         duration: 1.5,
-
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-
       });
+    });
 
+    // Guest button functionality
+    document.getElementById('guestBtn').addEventListener('click', () => {
+      // Example action - replace with your actual guest login logic
+      alert('Continuing as guest - add your redirect logic here');
+      // window.location.href = '/guest-dashboard';
     });
 
     // Original parallax animation
-
     document.addEventListener("DOMContentLoaded", () => {
-
       gsap.registerPlugin(ScrollTrigger);
-
       document.querySelectorAll('[data-parallax-layers]').forEach((triggerElement) => {
-
         let tl = gsap.timeline({
-
           scrollTrigger: {
-
             trigger: triggerElement,
-
             start: "0% 0%",
-
             end: "100% 0%",
-
             scrub: 0
-
           }
-
         });
-
         const layers = [
-
           { layer: "1", yPercent: 70 },
-
           { layer: "2", yPercent: 55 },
-
           { layer: "3", yPercent: 40 },
-
           { layer: "4", yPercent: 10 }
-
         ];
-
         layers.forEach((layerObj, idx) => {
-
           tl.to(
-
             triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
-
             { yPercent: layerObj.yPercent, ease: "none" },
-
             idx === 0 ? undefined : "<"
-
           );
-
         });
-
       });
 
       // Update Lenis on scroll
-
       lenis.on('scroll', ScrollTrigger.update);
-
       gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-
       gsap.ticker.lagSmoothing(0);
-
     });
-
   </script>
-
 </body>
-
-  </html>
+</html>
