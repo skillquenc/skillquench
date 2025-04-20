@@ -228,7 +228,7 @@
             <input type="password" placeholder="Enter password" required>
           </div>
           <button type="submit" class="submit">Sign in</button>
-          <button type="button" class="guest-btn">Continue as Guest</button>
+          <button type="button" class="guest-btn" id="guestBtn">Continue as Guest</button>
           <p class="signup-link">
             No account? <a href="#">Sign up</a>
           </p>
@@ -283,6 +283,11 @@
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time) => { lenis.raf(time * 1000); });
       gsap.ticker.lagSmoothing(0);
+    });
+
+    // Redirect guest button to SkillQuench website
+    document.getElementById('guestBtn').addEventListener('click', function() {
+      window.location.href = 'https://skillquench.godaddysites.com/';
     });
   </script>
 </body>
